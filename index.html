@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">MIKE KELLEY</div>
+      <nav class="menu">
+        <a href="#">Portfolio</a>
+        <a href="#">Commissions</a>
+        <a href="#">About</a>
+        <a href="#">Books</a>
+        <a href="#">Print Shop</a>
+        <a href="#">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main gallery area -->
+    <main class="gallery">
+      <div class="thumbnails">
+        <div class="thumbnail" data-index="0" style="background-color: #FF5733;"></div>
+        <div class="thumbnail" data-index="1" style="background-color: #33FFBD;"></div>
+        <div class="thumbnail" data-index="2" style="background-color: #335BFF;"></div>
+        <div class="thumbnail" data-index="3" style="background-color: #FF33A8;"></div>
+        <div class="thumbnail" data-index="4" style="background-color: #FFD133;"></div>
+        <div class="thumbnail" data-index="5" style="background-color: #33FF57;"></div>
+        <div class="thumbnail" data-index="6" style="background-color: #FF5733;"></div>
+        <div class="thumbnail" data-index="7" style="background-color: #33FFBD;"></div>
+      </div>
+    </main>
+
+    <!-- Lightbox hidden initially -->
+    <div class="lightbox hidden">
+      <div class="lightbox-content">
+        <span class="close-btn">&times;</span>
+        <div class="lightbox-image" id="currentImage"></div>
+        <div class="lightbox-navigation">
+          <button class="prev-btn">Prev</button>
+          <button class="next-btn">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
