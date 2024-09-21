@@ -32,7 +32,7 @@ html, body, button {
   width: 350px; /* Fixed width */
   min-width: 350px; /* Enforce minimum width to prevent shrinking */
   background: #fff;
-  padding: 40px;
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
   position: relative; /* Make it easier to position elements inside */
@@ -77,7 +77,6 @@ html, body, button {
 #lightbox-navigation {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
 }
 
 #lightbox-title {
@@ -86,17 +85,20 @@ html, body, button {
 
 
 button {
-  padding: 10px 20px;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   background: none;
   color: #000;
-  border: 1px solid black;
+  border: none;
+  padding: 15px 0 15px 15px;
+}
+
+#return-gallery-btn {
+  padding: 15px;
 }
 
 button:hover {
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6); /* Inset shadow on hover */
-  transform: translateY(1px); /* Push the button down slightly */
+  color: grey;
 }
 
 /* Gallery styling */
@@ -138,13 +140,12 @@ button:hover {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center;     /* Center vertically */
-  padding: 50px;           /* Add padding for proper margins */
   cursor: alias;
 }
 
 .lightbox-image {
-  max-height: calc(100vh - 100px); /* Ensures 50px margin on top/bottom */
-  max-width: calc(100vw - 450px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
+  max-height: calc(100vh - 70px); /* Ensures 50px margin on top/bottom */
+  max-width: calc(100vw - 400px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
   object-fit: contain; /* Ensure the image fits without distortion */
   cursor: default;
 }
