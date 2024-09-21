@@ -34,10 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('currentImage');
 
-    lightboxImage.style.backgroundImage = `url(${images[currentIndex].src})`;
+    // Set the src attribute of the img tag to the selected image
+    lightboxImage.src = images[currentIndex].src;
     lightbox.classList.remove('hidden');
     gallery.classList.add('hidden');
   }
+
 
   // Function to close the lightbox
   document.getElementById('lightbox').addEventListener('click', function() {
@@ -58,6 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function navigateLightbox(direction) {
     currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
     const lightboxImage = document.getElementById('currentImage');
-    lightboxImage.style.backgroundImage = `url(${images[currentIndex].src})`;
+    lightboxImage.src = images[currentIndex].src;
   }
 });
