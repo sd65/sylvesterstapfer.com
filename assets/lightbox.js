@@ -1,34 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-
-  // Detect the user's browser language
-  var userLang = navigator.language || navigator.userLanguage;
-
-  // If the user's language starts with 'fr', switch to French
-  if (userLang.startsWith('fr')) {
-    // Hide English content
-    document.querySelectorAll('.lang-en').forEach(function(el) {
-      el.style.display = 'none';
-    });
-
-    // Show French content
-    document.querySelectorAll('.lang-fr').forEach(function(el) {
-      el.style.display = 'inline';
-    });
-  } else {
-    // Otherwise, show English and hide French (default state)
-    document.querySelectorAll('.lang-en').forEach(function(el) {
-      el.style.display = 'inline';
-    });
-
-    document.querySelectorAll('.lang-fr').forEach(function(el) {
-      el.style.display = 'none';
-    });
-  }
-
-
-
   let currentIndex = 0;
   let images = [];
   const thumbnails = document.getElementById('thumbnails');
@@ -85,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     lightboxSidecar.classList.add('hidden');
     gallery.classList.remove('hidden');
   }
-  document.querySelector('.return-gallery-btn').addEventListener('click', function() {
+  document.querySelector('#return-gallery-btn').addEventListener('click', function() {
     closeLightbox();
   });
   lightbox.addEventListener('click', function(event) {
@@ -96,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // Navigation buttons functionality
-  document.querySelector('.prev-btn').addEventListener('click', function() {
+  document.querySelector('#prev-btn').addEventListener('click', function() {
     navigateLightbox(-1);
   });
 
-  document.querySelector('.next-btn').addEventListener('click', function() {
+  document.querySelector('#next-btn').addEventListener('click', function() {
     navigateLightbox(1);
   });
 
@@ -120,4 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
     currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
     setLightboxImage(currentIndex)
   }
+
+  
 });

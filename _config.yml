@@ -1,0 +1,3 @@
+title: "Sylvester Stapfer Portfolio"
+baseurl: "" # Leave blank for GitHub Pages if it's in the root of your repo
+permalink: /:name/ # Removes the .html from links
