@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: unset;
 }
 
 @font-face
@@ -44,7 +45,7 @@ html, body, button {
   margin-bottom: 50px; /* Adjust spacing between logo and menu */
   text-align: right; /* Logo stays aligned to the left */
   line-height: 1;
-  top: -8px;
+  top: -4px;
   position: relative;
 }
 
