@@ -20,7 +20,6 @@ html, body {
   overflow: hidden; /* Ensure no overflow happens */
 }
 
-/* Sidebar styling */
 .sidebar {
   width: 350px; /* Fixed width */
   min-width: 350px; /* Enforce minimum width to prevent shrinking */
@@ -28,19 +27,21 @@ html, body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Align buttons at the bottom */
+  position: relative; /* Make it easier to position elements inside */
 }
-
 
 .logo {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Adjust spacing between logo and menu */
+  text-align: right; /* Logo stays aligned to the left */
 }
 
 .menu {
+  align-self: flex-end; /* Align the menu to the top-right */
   display: flex;
   flex-direction: column;
+  text-align: right; /* Ensure text is aligned to the right */
 }
 
 .menu a {
@@ -54,12 +55,13 @@ html, body {
   color: grey;
 }
 
-/* Navigation buttons at the bottom of the sidebar */
-.lightbox-navigation {
+#lightbox-navigation {
+  margin-top: auto; /* Pushes the buttons to the bottom */
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
 }
+
 
 button {
   padding: 10px 20px;
@@ -126,5 +128,5 @@ button:hover {
 }
 
 .hidden {
-  display: none; /* Hidden until active */
+  display: none !important; /* Hidden until active */
 }
