@@ -10,28 +10,53 @@ document.addEventListener('DOMContentLoaded', function() {
   const lightboxTitle = document.getElementById('lightbox-title');
 
   // Fetch the pics.json file and generate the gallery
-  fetch('pics.json')
-    .then(response => response.json())
-    .then(data => {
-      images = data; // Store the images for later use (e.g., for navigation)
+fetch('pics.json')
+  .then(response => response.json())
+  .then(data => {
+    images = data; // Store the images for later use (e.g., for navigation)
+    const thumbnailsContainer = document.getElementById('thumbnails'); // Get your container
 
-      // Loop through the images and create thumbnail elements
-      images.forEach((image, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.classList.add('thumbnail');
-        thumbnail.setAttribute('data-index', index);
-        thumbnail.style.backgroundImage = `url(${image.src})`;
-        thumbnail.setAttribute('title', image.title);
-        
-        // Add click event to open lightbox
-        thumbnail.addEventListener('click', function() {
-          openLightbox(index);
-        });
+    // Loop through the images and create thumbnail elements
+    images.forEach((image, index) => {
+      const thumbnail = document.createElement('div');
+      thumbnail.classList.add('thumbnail');
+      thumbnail.setAttribute('data-index', index);
+      thumbnail.setAttribute('title', image.title);
 
-        thumbnails.appendChild(thumbnail);
+      // Use a placeholder image to display before lazy loading
+      const img = document.createElement('img');
+      img.dataset.src = image.src; // Set data-src for lazy loading
+      img.alt = image.title;
+      img.src = 'assets/1.jpg'; // Placeholder image until real image is loaded
+      img.classList.add('lazy-image');
+      thumbnail.appendChild(img);
+
+      // Add click event to open lightbox
+      thumbnail.addEventListener('click', function() {
+        openLightbox(index);
       });
-    })
-    .catch(error => console.error('Error loading images:', error));
+
+      thumbnailsContainer.appendChild(thumbnail);
+    });
+
+    // Set up the lazy loading observer
+    const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src; // Load the actual image
+          img.classList.remove('lazy-image');
+          observer.unobserve(img); // Stop observing once the image is loaded
+        }
+      });
+    });
+
+    // Observe all images for lazy loading
+    const lazyImages = document.querySelectorAll('img.lazy-image');
+    lazyImages.forEach(image => lazyLoadObserver.observe(image));
+  })
+  .catch(error => console.error('Error loading images:', error));
+
 
   // Function to open the lightbox
   function openLightbox(index) {
@@ -45,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function setLightboxImage(index) {
+      console.log(currentIndex);
       lightboxImage.src = images[currentIndex].src;
       lightboxTitle.innerText = images[currentIndex].title;
   }

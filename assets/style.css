@@ -122,10 +122,16 @@ button:hover {
 
 /* Thumbnail styles */
 .thumbnail {
-  aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
-  background-size: cover; /* Cover the thumbnail without distortion */
-  background-position: center; /* Center the image in the thumbnail */
   transition: opacity 0.2s ease; /* Optional: hover effect */
+ position: relative;
+ overflow: hidden;
+ aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the thumbnail without distortion */
 }
 
 /* Hover effect to enlarge slightly */
