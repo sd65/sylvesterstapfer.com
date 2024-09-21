@@ -33,8 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
   let images = [];
   const thumbnails = document.getElementById('thumbnails');
   const gallery = document.getElementById('gallery');
-  const lightboxNavigation = document.getElementById('lightbox-navigation');
+  const lightboxSidecar = document.getElementById('lightbox-sidecar');
   const lightboxImage = document.getElementById('currentImage');
+  const lightboxTitle = document.getElementById('lightbox-title');
 
   // Fetch the pics.json file and generate the gallery
   fetch('pics.json')
@@ -64,21 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
   function openLightbox(index) {
     currentIndex = index; // Update current index
     const lightbox = document.getElementById('lightbox');
-    
+    setLightboxImage(index)
     // Set the src attribute of the img tag to the selected image
-    lightboxImage.src = images[currentIndex].src;
     lightbox.classList.remove('hidden');
     gallery.classList.add('hidden');
-    lightboxNavigation.classList.remove('hidden');
+    lightboxSidecar.classList.remove('hidden');
   }
 
+  function setLightboxImage(index) {
+      lightboxImage.src = images[currentIndex].src;
+      lightboxTitle.innerText = images[currentIndex].title;
+  }
 
 
 
   // Function to close the lightbox
   function closeLightbox() {
     lightbox.classList.add('hidden');
-    lightboxNavigation.classList.add('hidden');
+    lightboxSidecar.classList.add('hidden');
     gallery.classList.remove('hidden');
   }
   document.querySelector('.return-gallery-btn').addEventListener('click', function() {
@@ -114,6 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to navigate through lightbox images
   function navigateLightbox(direction) {
     currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
-    lightboxImage.src = images[currentIndex].src;
+    setLightboxImage(currentIndex)
   }
 });

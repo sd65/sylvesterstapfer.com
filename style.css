@@ -55,11 +55,18 @@ html, body {
   color: grey;
 }
 
-#lightbox-navigation {
+#lightbox-sidecar {
   margin-top: auto; /* Pushes the buttons to the bottom */
+}
+
+#lightbox-navigation {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
+}
+
+#lightbox-title {
+  text-align: center;
 }
 
 
