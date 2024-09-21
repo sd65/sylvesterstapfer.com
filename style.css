@@ -17,17 +17,20 @@ html, body {
   height: 100vh;
   width: 100%;
   flex-direction: row;
+  overflow: hidden; /* Ensure no overflow happens */
 }
 
 /* Sidebar styling */
 .sidebar {
   width: 350px; /* Fixed width */
+  min-width: 350px; /* Enforce minimum width to prevent shrinking */
   background: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Align buttons at the bottom */
 }
+
 
 .logo {
   font-size: 24px;
@@ -116,8 +119,7 @@ button:hover {
 
 .lightbox-image {
   max-height: calc(100vh - 100px); /* Ensures 50px margin on top/bottom */
-  max-width: calc(100vw - 400px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
-  margin: 0 50px; /* Maintain 50px margin on the right */
+  max-width: calc(100vw - 450px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
   object-fit: contain; /* Ensure the image fits without distortion */
 }
 
