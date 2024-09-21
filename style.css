@@ -115,12 +115,14 @@ button:hover {
   justify-content: center; /* Center horizontally */
   align-items: center;     /* Center vertically */
   padding: 50px;           /* Add padding for proper margins */
+  cursor: alias;
 }
 
 .lightbox-image {
   max-height: calc(100vh - 100px); /* Ensures 50px margin on top/bottom */
   max-width: calc(100vw - 450px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
   object-fit: contain; /* Ensure the image fits without distortion */
+  cursor: default;
 }
 
 .hidden {

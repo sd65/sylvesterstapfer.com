@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const thumbnails = document.getElementById('thumbnails');
   const gallery = document.getElementById('gallery');
   const lightboxNavigation = document.getElementById('lightbox-navigation');
+  const lightboxImage = document.getElementById('currentImage');
 
   // Fetch the pics.json file and generate the gallery
   fetch('pics.json')
@@ -33,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function openLightbox(index) {
     currentIndex = index; // Update current index
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('currentImage');
-
+    
     // Set the src attribute of the img tag to the selected image
     lightboxImage.src = images[currentIndex].src;
     lightbox.classList.remove('hidden');
@@ -43,12 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
+
+
   // Function to close the lightbox
-  document.querySelector('.return-gallery-btn').addEventListener('click', function() {
+  function closeLightbox() {
     lightbox.classList.add('hidden');
     lightboxNavigation.classList.add('hidden');
     gallery.classList.remove('hidden');
+  }
+  document.querySelector('.return-gallery-btn').addEventListener('click', function() {
+    closeLightbox();
   });
+  lightbox.addEventListener('click', function(event) {
+  if (event.target !== currentImage) {
+    closeLightbox();
+  }
+});
 
 
   // Navigation buttons functionality
@@ -74,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to navigate through lightbox images
   function navigateLightbox(direction) {
     currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
-    const lightboxImage = document.getElementById('currentImage');
     lightboxImage.src = images[currentIndex].src;
   }
 });
