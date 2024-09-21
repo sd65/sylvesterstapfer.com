@@ -5,10 +5,18 @@
   box-sizing: border-box;
 }
 
+@font-face
+{
+    font-family: 'OpenSans-Regular';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../assets/OpenSans-Regular.ttf');
+}
+
 /* Ensure body and html fill the viewport height */
 html, body, button {
   height: 100%;
-  font-family: Arial, sans-serif;
+  font-family: 'OpenSans-Regular', sans-serif;
 }
 
 /* Flex container for sidebar and gallery/lightbox */
@@ -24,7 +32,7 @@ html, body, button {
   width: 350px; /* Fixed width */
   min-width: 350px; /* Enforce minimum width to prevent shrinking */
   background: #fff;
-  padding: 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   position: relative; /* Make it easier to position elements inside */
@@ -33,8 +41,11 @@ html, body, button {
 .logo {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px; /* Adjust spacing between logo and menu */
+  margin-bottom: 50px; /* Adjust spacing between logo and menu */
   text-align: right; /* Logo stays aligned to the left */
+  line-height: 1;
+  top: -8px;
+  position: relative;
 }
 
 .menu {
@@ -91,7 +102,6 @@ button:hover {
 /* Gallery styling */
 .gallery {
   flex: 1;
-  padding: 20px;
   display: flex;
   align-items: flex-start;
   overflow-y: auto; /* Allows vertical scrolling if content overflows */
@@ -103,7 +113,7 @@ button:hover {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 10px; /* Space between thumbnails */
   justify-content: center; /* Center thumbnails */
-  padding: 20px; /* Padding for the gallery */
+  padding: 40px 20px; /* Padding for the gallery */
   width: 100%; /* Take up the right side */
 }
 
@@ -144,7 +154,7 @@ button:hover {
 }
 
 .content {
-  margin: 50px;
+  margin: 50px 20px;
    max-width: 950px;
 }
 
@@ -153,11 +163,13 @@ h1 {
 }
 
 p {
-  margin-top: 1em;
   margin-bottom: 1em;
   text-align: justify;
 }
 
+a, a:visited {
+  color: #000;
+}
 
 .about-image img {
   float: right; /* Float the image to the right */
