@@ -1,11 +1,26 @@
+
+  // Function to get URL parameter by name
+  function getURLParameter(name) {
+      return new URLSearchParams(window.location.search).get(name);
+  }
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
 
-  // Detect the user's browser language
+  // Get the 'lang' parameter from the URL (if available)
+  var langOverride = getURLParameter('lang');
+
+  // Get the user's browser language
   var userLang = navigator.language || navigator.userLanguage;
 
+  // Override the browser language if ?lang=xx is passed
+  var finalLang = langOverride || userLang;
+
+
   // If the user's language starts with 'fr', switch to French
-  if (userLang.startsWith('fr')) {
+  if (finalLang.startsWith('fr')) {
     // Hide English content
     document.querySelectorAll('.lang-en').forEach(function(el) {
       el.style.display = 'none';
