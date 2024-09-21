@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let images = [];
   const thumbnails = document.getElementById('thumbnails');
   const gallery = document.getElementById('gallery');
+  const lightboxNavigation = document.getElementById('lightbox-navigation');
 
   // Fetch the pics.json file and generate the gallery
   fetch('pics.json')
@@ -38,14 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
     lightboxImage.src = images[currentIndex].src;
     lightbox.classList.remove('hidden');
     gallery.classList.add('hidden');
+    lightboxNavigation.classList.remove('hidden');
   }
 
 
   // Function to close the lightbox
-  document.getElementById('lightbox').addEventListener('click', function() {
-    this.classList.add('hidden');
+  document.querySelector('.return-gallery-btn').addEventListener('click', function() {
+    lightbox.classList.add('hidden');
+    lightboxNavigation.classList.add('hidden');
     gallery.classList.remove('hidden');
   });
+
 
   // Navigation buttons functionality
   document.querySelector('.prev-btn').addEventListener('click', function() {
@@ -54,6 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector('.next-btn').addEventListener('click', function() {
     navigateLightbox(1);
+  });
+
+
+  document.addEventListener('keydown', function(event) {
+    if (!lightbox.classList.contains('hidden')) { // Only if the lightbox is visible
+      if (event.key === 'ArrowLeft') {
+        navigateLightbox(-1);
+      } else if (event.key === 'ArrowRight') {
+        navigateLightbox(1);
+      }
+    }
   });
 
   // Function to navigate through lightbox images

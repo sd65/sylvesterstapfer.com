@@ -98,13 +98,13 @@ button:hover {
   aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
   background-size: cover; /* Cover the thumbnail without distortion */
   background-position: center; /* Center the image in the thumbnail */
-  border: 2px solid #ddd; /* Optional: add a border around the thumbnail */
-  transition: transform 0.2s ease; /* Optional: hover effect */
+  transition: opacity 0.2s ease; /* Optional: hover effect */
 }
 
 /* Hover effect to enlarge slightly */
 .thumbnail:hover {
-  transform: scale(1.05);
+  opacity: .9;
+  cursor: pointer;
 }
 
 /* Lightbox styling */
