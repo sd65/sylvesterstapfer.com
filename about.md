@@ -5,7 +5,7 @@ permalink: /about
 ---
 
 <div class="content">
-    <h1><span class="lang-en">About</span><span class="lang-fr">A propos</span></h1>
+    <h1>A propos</h1>
 
     <div class="about-image">
     <img src="/assets/me.jpg" alt="About Image">
