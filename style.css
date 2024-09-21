@@ -11,7 +11,7 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
-/* Flex container for sidebar and gallery */
+/* Flex container for sidebar and gallery/lightbox */
 .container {
   display: flex;
   height: 100vh;
@@ -26,6 +26,7 @@ html, body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Align buttons at the bottom */
 }
 
 .logo {
@@ -50,12 +51,32 @@ html, body {
   color: grey;
 }
 
+/* Navigation buttons at the bottom of the sidebar */
+.lightbox-navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+}
+
+button:hover {
+  background: #555;
+}
+
 /* Gallery styling */
 .gallery {
   flex: 1;
   padding: 20px;
   display: flex;
-  align-items: flex-start; /* Align items to the top of the container */
+  align-items: flex-start;
   background-color: #f8f8f8;
   overflow-y: auto; /* Allows vertical scrolling if content overflows */
 }
@@ -84,57 +105,22 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Lightbox styling */
+/* Lightbox Styling */
 .lightbox {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: calc(100% - 350px); /* The lightbox will take the remaining width next to the sidebar */
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  flex: 1;
+  background-color: white; /* White background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
 }
 
-.lightbox.hidden {
-  display: none;
-}
-
-.lightbox-content {
-  width: 60%;
-  text-align: center;
+.hidden {
+  display: none; /* Hidden until active */
 }
 
 .lightbox-image {
   width: 100%;
-  height: 400px;
+  height: 100%;
   background-size: cover;
   background-position: center;
-}
-
-.close-btn {
-  font-size: 24px;
-  color: white;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  cursor: pointer;
-}
-
-.lightbox-navigation {
-  margin-top: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background: white;
-  border: none;
-}
-
-button:hover {
-  background: lightgrey;
 }
