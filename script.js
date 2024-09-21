@@ -1,50 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const thumbnails = document.querySelectorAll('.thumbnail');
-  const lightbox = document.getElementById('lightbox');
-  const gallery = document.getElementById('gallery');
-  const currentImage = document.getElementById('currentImage');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
+document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = 0;
+  let images = [];
+  const thumbnails = document.getElementById('thumbnails');
+  const gallery = document.getElementById('gallery');
 
-  const images = [
-    '#FF5733', '#33FFBD', '#335BFF', '#FF33A8', '#FFD133', '#33FF57', '#FF5733', '#33FFBD'
-  ];
+  // Fetch the pics.json file and generate the gallery
+  fetch('pics.json')
+    .then(response => response.json())
+    .then(data => {
+      images = data; // Store the images for later use (e.g., for navigation)
+
+      // Loop through the images and create thumbnail elements
+      images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.classList.add('thumbnail');
+        thumbnail.setAttribute('data-index', index);
+        thumbnail.style.backgroundImage = `url(${image.src})`;
+        thumbnail.setAttribute('title', image.title);
+        
+        // Add click event to open lightbox
+        thumbnail.addEventListener('click', function() {
+          openLightbox(index);
+        });
+
+        thumbnails.appendChild(thumbnail);
+      });
+    })
+    .catch(error => console.error('Error loading images:', error));
 
   // Function to open the lightbox
-  const openLightbox = (index) => {
-    gallery.classList.add('hidden'); // Hide the gallery
-    lightbox.classList.remove('hidden'); // Show the lightbox
-    currentIndex = index;
-    currentImage.style.backgroundColor = images[currentIndex];
-  };
+  function openLightbox(index) {
+    currentIndex = index; // Update current index
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('currentImage');
 
-  // Function to close the lightbox and return to gallery
-  const closeLightbox = () => {
-    lightbox.classList.add('hidden');
+    lightboxImage.style.backgroundImage = `url(${images[currentIndex].src})`;
+    lightbox.classList.remove('hidden');
+    gallery.classList.add('hidden');
+  }
+
+  // Function to close the lightbox
+  document.getElementById('lightbox').addEventListener('click', function() {
+    this.classList.add('hidden');
     gallery.classList.remove('hidden');
-  };
-
-  // Show next image
-  const showNextImage = () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    currentImage.style.backgroundColor = images[currentIndex];
-  };
-
-  // Show previous image
-  const showPrevImage = () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    currentImage.style.backgroundColor = images[currentIndex];
-  };
-
-  // Event listeners for thumbnails
-  thumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener('click', () => {
-      openLightbox(index);
-    });
   });
 
-  // Event listeners for Prev/Next buttons
-  nextBtn.addEventListener('click', showNextImage);
-  prevBtn.addEventListener('click', showPrevImage);
+  // Navigation buttons functionality
+  document.querySelector('.prev-btn').addEventListener('click', function() {
+    navigateLightbox(-1);
+  });
+
+  document.querySelector('.next-btn').addEventListener('click', function() {
+    navigateLightbox(1);
+  });
+
+  // Function to navigate through lightbox images
+  function navigateLightbox(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
+    const lightboxImage = document.getElementById('currentImage');
+    lightboxImage.style.backgroundImage = `url(${images[currentIndex].src})`;
+  }
 });

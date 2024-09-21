@@ -77,33 +77,33 @@ button:hover {
   padding: 20px;
   display: flex;
   align-items: flex-start;
-  background-color: #f8f8f8;
   overflow-y: auto; /* Allows vertical scrolling if content overflows */
 }
 
+/* Container for the thumbnails */
 .thumbnails {
-  display: flex;
-  flex-wrap: wrap; /* Allows thumbnails to wrap to the next line */
-  gap: 15px;
-  justify-content: flex-start; /* Align thumbnails to the left of the container */
-  width: 100%; /* Ensures the thumbnails span the available width */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 10px; /* Space between thumbnails */
+  justify-content: center; /* Center thumbnails */
+  padding: 20px; /* Padding for the gallery */
+  width: 100%; /* Take up the right side */
 }
 
-/* Thumbnails: flexible size between 350px and 500px */
+/* Thumbnail styles */
 .thumbnail {
-  flex: 1 1 350px; /* Thumbnail should be minimum 350px */
-  max-width: 500px; /* Maximum size of 500px */
-  height: 0;
-  padding-bottom: 100%; /* Maintain a square aspect ratio */
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  transition: transform 0.3s;
+  aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
+  background-size: cover; /* Cover the thumbnail without distortion */
+  background-position: center; /* Center the image in the thumbnail */
+  border: 2px solid #ddd; /* Optional: add a border around the thumbnail */
+  transition: transform 0.2s ease; /* Optional: hover effect */
 }
 
+/* Hover effect to enlarge slightly */
 .thumbnail:hover {
   transform: scale(1.05);
 }
+
 
 /* Lightbox Styling */
 .lightbox {
