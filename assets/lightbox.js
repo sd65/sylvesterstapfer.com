@@ -1,45 +1,57 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-
+  // Variables to hold the current image index and the image data
   let currentIndex = 0;
   let images = [];
+
+  // DOM elements
   const thumbnails = document.getElementById('thumbnails');
   const gallery = document.getElementById('gallery');
   const lightboxSidecar = document.getElementById('lightbox-sidecar');
   const lightboxImage = document.getElementById('currentImage');
   const lightboxTitle = document.getElementById('lightbox-title');
+  const lightbox = document.getElementById('lightbox');
+  const returnGalleryBtn = document.querySelector('#return-gallery-btn');
+  const prevBtn = document.querySelector('#prev-btn');
+  const nextBtn = document.querySelector('#next-btn');
 
-  // Fetch the pics.json file and generate the gallery
-fetch('pics.json')
-  .then(response => response.json())
-  .then(data => {
-    images = data; // Store the images for later use (e.g., for navigation)
-    const thumbnailsContainer = document.getElementById('thumbnails'); // Get your container
+  // Fetch image data from pics.json and generate the gallery
+  fetch('pics.json')
+    .then(response => response.json())
+    .then(data => {
+      images = data; // Store the images for later use (e.g., navigation)
+      generateThumbnails(images); // Create thumbnail elements
+      setUpLazyLoading(); // Initialize lazy loading for images
+    })
+    .catch(error => console.error('Error loading images:', error));
 
-    // Loop through the images and create thumbnail elements
+  /**
+   * Generate thumbnail elements from the image data
+   */
+  function generateThumbnails(images) {
     images.forEach((image, index) => {
       const thumbnail = document.createElement('div');
       thumbnail.classList.add('thumbnail');
       thumbnail.setAttribute('data-index', index);
       thumbnail.setAttribute('title', image.title);
 
-      // Use a placeholder image to display before lazy loading
+      // Create an img element for the thumbnail
       const img = document.createElement('img');
-      img.dataset.src = image.src; // Set data-src for lazy loading
+      img.dataset.src = image.src; // Use data-src for lazy loading
       img.alt = image.title;
-      img.src = 'assets/1.jpg'; // Placeholder image until real image is loaded
       img.classList.add('lazy-image');
       thumbnail.appendChild(img);
 
       // Add click event to open lightbox
-      thumbnail.addEventListener('click', function() {
-        openLightbox(index);
-      });
-
-      thumbnailsContainer.appendChild(thumbnail);
+      thumbnail.addEventListener('click', () => openLightbox(index));
+      thumbnails.appendChild(thumbnail);
     });
+  }
 
-    // Set up the lazy loading observer
+  /**
+   * Set up lazy loading for images using IntersectionObserver
+   */
+  function setUpLazyLoading() {
     const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -51,60 +63,70 @@ fetch('pics.json')
       });
     });
 
-    // Observe all images for lazy loading
     const lazyImages = document.querySelectorAll('img.lazy-image');
     lazyImages.forEach(image => lazyLoadObserver.observe(image));
-  })
-  .catch(error => console.error('Error loading images:', error));
+  }
 
-
-  // Function to open the lightbox
+  /**
+   * Open the lightbox with the selected image
+   * @param {number} index - The index of the image to display
+   */
   function openLightbox(index) {
-    currentIndex = index; // Update current index
-    const lightbox = document.getElementById('lightbox');
-    setLightboxImage(index)
-    // Set the src attribute of the img tag to the selected image
-    lightbox.classList.remove('hidden');
-    gallery.classList.add('hidden');
-    lightboxSidecar.classList.remove('hidden');
+    currentIndex = index; // Update current image index
+    setLightboxImage(currentIndex); // Set the lightbox image
+    lightbox.classList.remove('hidden'); // Show the lightbox
+    gallery.classList.add('hidden'); // Hide the gallery
+    lightboxSidecar.classList.remove('hidden'); // Show navigation controls
   }
 
+  /**
+   * Set the lightbox image based on the current index
+   * @param {number} index - The index of the image to display
+   */
   function setLightboxImage(index) {
-      console.log(currentIndex);
-      lightboxImage.src = images[currentIndex].src;
-      lightboxTitle.innerText = images[currentIndex].title;
+    lightboxImage.src = images[index].src; // Update image source
+    lightboxTitle.innerText = images[index].title; // Update image title
   }
 
-
-
-  // Function to close the lightbox
+  /**
+   * Close the lightbox and return to the gallery view
+   */
   function closeLightbox() {
-    lightbox.classList.add('hidden');
-    lightboxSidecar.classList.add('hidden');
-    gallery.classList.remove('hidden');
+    lightbox.classList.add('hidden'); // Hide the lightbox
+    lightboxSidecar.classList.add('hidden'); // Hide navigation controls
+    gallery.classList.remove('hidden'); // Show the gallery
   }
-  document.querySelector('#return-gallery-btn').addEventListener('click', function() {
-    closeLightbox();
-  });
+
+  /**
+   * Navigate through the lightbox images
+   * @param {number} direction - Direction to navigate (-1 for prev, 1 for next)
+   */
+  function navigateLightbox(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length; // Loop through images
+    setLightboxImage(currentIndex); // Set the new image
+  }
+
+  /**
+   * Event listeners
+   */
+  
+  // Close the lightbox when clicking the "return to gallery" button
+  returnGalleryBtn.addEventListener('click', closeLightbox);
+
+  // Close the lightbox if clicking outside the image
   lightbox.addEventListener('click', function(event) {
-  if (event.target !== currentImage) {
-    closeLightbox();
-  }
-});
-
-
-  // Navigation buttons functionality
-  document.querySelector('#prev-btn').addEventListener('click', function() {
-    navigateLightbox(-1);
+    if (event.target !== lightboxImage) {
+      closeLightbox();
+    }
   });
 
-  document.querySelector('#next-btn').addEventListener('click', function() {
-    navigateLightbox(1);
-  });
+  // Navigate images with "previous" and "next" buttons
+  prevBtn.addEventListener('click', () => navigateLightbox(-1));
+  nextBtn.addEventListener('click', () => navigateLightbox(1));
 
-
+  // Navigate images with left and right arrow keys
   document.addEventListener('keydown', function(event) {
-    if (!lightbox.classList.contains('hidden')) { // Only if the lightbox is visible
+    if (!lightbox.classList.contains('hidden')) { // Only navigate if lightbox is visible
       if (event.key === 'ArrowLeft') {
         navigateLightbox(-1);
       } else if (event.key === 'ArrowRight') {
@@ -113,11 +135,4 @@ fetch('pics.json')
     }
   });
 
-  // Function to navigate through lightbox images
-  function navigateLightbox(direction) {
-    currentIndex = (currentIndex + direction + images.length) % images.length; // Loop around if at start or end
-    setLightboxImage(currentIndex)
-  }
-
-  
 });

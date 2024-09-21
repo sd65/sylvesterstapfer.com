@@ -6,8 +6,7 @@
   outline: unset;
 }
 
-@font-face
-{
+@font-face {
     font-family: 'OpenSans-Regular';
     font-weight: normal;
     font-style: normal;
@@ -15,7 +14,7 @@
 }
 
 /* Ensure body and html fill the viewport height */
-html, body, button {
+html, body {
   height: 100%;
   font-family: 'OpenSans-Regular', sans-serif;
 }
@@ -26,65 +25,68 @@ html, body, button {
   height: 100vh;
   width: 100%;
   flex-direction: row;
-  overflow: hidden; /* Ensure no overflow happens */
+  overflow: hidden; /* Prevent overflow of content */
 }
 
+/* Sidebar styling */
 .sidebar {
   width: 350px; /* Fixed width */
-  min-width: 350px; /* Enforce minimum width to prevent shrinking */
+  min-width: 350px; /* Prevent sidebar from shrinking */
   background: #fff;
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  position: relative; /* Make it easier to position elements inside */
 }
 
+/* Logo styles */
 .logo {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 50px; /* Adjust spacing between logo and menu */
-  text-align: right; /* Logo stays aligned to the left */
+  margin-bottom: 50px; /* Space between logo and menu */
+  text-align: right;
   line-height: 1;
   top: -4px;
   position: relative;
 }
 
+/* Menu styles */
 .menu {
-  align-self: flex-end; /* Align the menu to the top-right */
+  align-self: flex-end; /* Align the menu to the bottom-right */
   display: flex;
   flex-direction: column;
-  text-align: right; /* Ensure text is aligned to the right */
+  text-align: right; /* Align text to the right */
 }
 
 .menu a {
-  text-decoration: none; /* Remove underline by default */
-  color: black; /* Adjust default color */
-  margin-bottom: 20px;
+  text-decoration: none; /* Remove default underline */
+  color: black; /* Default link color */
+  margin-bottom: 20px; /* Space between menu items */
   font-size: 18px;
 }
 
 .menu a.active {
-  text-decoration: underline; /* Underline the active link */
+  text-decoration: underline; /* Underline active link */
 }
 
 .menu a:hover {
-  color: grey;
+  color: grey; /* Change link color on hover */
 }
 
+/* Lightbox sidecar (navigation) */
 #lightbox-sidecar {
-  margin-top: auto; /* Pushes the buttons to the bottom */
+  margin-top: auto; /* Push buttons to the bottom of the sidebar */
 }
 
 #lightbox-navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space buttons evenly across */
 }
 
 #lightbox-title {
-  text-align: center;
+  text-align: center; /* Center the title text */
 }
 
-
+/* Button styling */
 button {
   font-size: 30px;
   cursor: pointer;
@@ -99,73 +101,77 @@ button {
 }
 
 button:hover {
-  color: grey;
+  color: grey; /* Change button text color on hover */
 }
 
 /* Gallery styling */
 .gallery {
-  flex: 1;
+  flex: 1; /* Take up remaining space after sidebar */
   display: flex;
-  align-items: flex-start;
-  overflow-y: auto; /* Allows vertical scrolling if content overflows */
+  align-items: flex-start; /* Align thumbnails to the top */
+  overflow-y: auto; /* Allow vertical scrolling if thumbnails overflow */
 }
 
-/* Container for the thumbnails */
+/* Thumbnails container styling */
 .thumbnails {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 10px; /* Space between thumbnails */
-  justify-content: center; /* Center thumbnails */
-  padding: 40px 20px; /* Padding for the gallery */
-  width: 100%; /* Take up the right side */
+  justify-content: center; /* Center thumbnails in the gallery */
+  padding: 40px 20px; /* Padding for gallery */
+  width: 100%; /* Fill available width */
 }
 
 /* Thumbnail styles */
 .thumbnail {
-  transition: opacity 0.2s ease; /* Optional: hover effect */
- position: relative;
- overflow: hidden;
- aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
+  overflow: hidden; /* Ensure images do not overflow their container */
+  aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
+  transition: opacity 0.2s ease; /* Smooth opacity transition on hover */
+  background: #c4c4c4; /* Placeholder */
 }
 
 .thumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the thumbnail without distortion */
+  object-fit: cover; /* Cover the thumbnail without distortion */
 }
 
-/* Hover effect to enlarge slightly */
+/* Hover effect for thumbnails */
 .thumbnail:hover {
-  opacity: .9;
+  opacity: .9; /* Slightly reduce opacity on hover */
   cursor: pointer;
 }
 
-/* Lightbox styling */
+/* Lightbox container styling */
 .lightbox {
   flex: 1;
   background-color: white;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  cursor: alias;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  cursor: alias; /* Change cursor when hovering */
 }
 
+/* Lightbox image styling */
 .lightbox-image {
-  max-height: calc(100vh - 70px); /* Ensures 50px margin on top/bottom */
-  max-width: calc(100vw - 400px);  /* Ensures the image fits within view, with 350px sidebar and 50px margin on the right */
+  max-height: calc(100vh - 70px); /* Ensure 50px margin on top and bottom */
+  max-width: calc(100vw - 400px); /* Ensure image fits with space for sidebar and margin */
   object-fit: contain; /* Ensure the image fits without distortion */
   cursor: default;
 }
 
+/* Hidden class to hide elements */
 .hidden {
-  display: none !important; /* Hidden until active */
+  display: none !important;
 }
 
+/* Content block styling */
 .content {
   margin: 50px 20px;
-   max-width: 950px;
+  max-width: 950px;
 }
 
+/* General text styles */
 h1 {
   margin-bottom: 1em;
 }
@@ -175,32 +181,17 @@ p {
   text-align: justify;
 }
 
+/* Link styles */
 a, a:visited {
   color: #000;
 }
 
+/* Image in about section */
 .about-image img {
-  float: right; /* Float the image to the right */
-  margin: 0 0 20px 20px; /* Space between the image and text */
-  width: 20vw; /* Image width is 20% of the viewport width */
-  max-width: 300px; /* Maximum size for larger screens */
-  min-width: 150px; /* Minimum size for smaller screens */
-  height: auto; /* Maintain the aspect ratio of the image */
+  float: right; /* Float the image to the right of the text */
+  margin: 0 0 20px 20px; /* Space between the image and the text */
+  width: 20vw; /* Image takes 20% of the viewport width */
+  max-width: 300px; /* Limit maximum size for larger screens */
+  min-width: 150px; /* Ensure a minimum size for smaller screens */
+  height: auto; /* Maintain aspect ratio */
 }
-
-.about-text {
-  /* No special styles needed unless you want additional padding/margins */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
