@@ -10,7 +10,7 @@ lightbox: true
   </div>
 </div>
 
-  <!-- Lightbox Image (hidden by default) -->
-  <main class="lightbox hidden" id="lightbox">
-    <img id="currentImage" src="" alt="Full-size image" class="lightbox-image">
-  </main>
+<!-- Lightbox Image (hidden by default) -->
+<main class="lightbox hidden" id="lightbox">
+  <img id="currentImage" src="" alt="Full-size image" class="lightbox-image">
+</main>
