@@ -20,12 +20,6 @@ PICS_DIR="p"
 # Ensure the temp directory is removed on exit
 trap "rm -rf $TEMP_DIR" EXIT
 
-# Function to remove leading numbers from filenames
-strip_leading_numbers() {
-    local filename="$1"
-    echo "$filename" | sed 's/^[0-9]*_//'
-}
-
 # Upload subcommand
 upload() {
     # Ensure at least one file is passed
@@ -38,8 +32,8 @@ upload() {
     sorted_files=$(printf '%s\n' "$@" | sort -V)
     echo "Sorted files: ${sorted_files[@]}"
 
-    # Initialize an array to store new entries
-    new_entries=()
+    # Initialize an array to store new entries as a JSON array
+    new_entries="[]"
 
     # Process each file
     while IFS= read -r file; do
@@ -55,10 +49,10 @@ upload() {
         title="${base_filename%.*}"
 
         # Remove leading numbers from the filename to create the title
-        title=$(strip_leading_numbers "$title")
+        title="${title##*[ 0-9]}"
 
         # Define file names for images
-        image_large="${TEMP_DIR}/${uuid}_large.jpg"
+        image_large="${TEMP_DIR}/${uuid}.jpg"
         image_thumbnail="${TEMP_DIR}/${uuid}_thumbnail.jpg"
 
         # No resize for the large image
@@ -74,9 +68,11 @@ upload() {
         wrangler r2 object put "$BUCKET/$PICS_DIR/${uuid}.jpg" --file "$image_large"
         wrangler r2 object put "$BUCKET/$PICS_DIR/${uuid}_thumbnail.jpg" --file "$image_thumbnail"
 
-        # Append new entry to the list of new entries
+        # Create a new entry in JSON format
         new_entry=$(jq -n --arg filename "$uuid" --arg title "$title" '{filename: $filename, title: $title}')
-        new_entries+=("$new_entry")
+
+        # Append new entry to the JSON array
+        new_entries=$(echo "$new_entries" | jq ". += [$new_entry]")
     done <<< "$sorted_files"
 
     # Fetch the current index.json from R2
@@ -84,13 +80,12 @@ upload() {
     temp_index="$TEMP_DIR/index.json"
     wrangler r2 object get "$BUCKET/$INDEX_FILE" --file "$temp_index" 2> /dev/null || echo "[]" > "$temp_index"
 
-
     # Update the index.json only once
-    if [ "${#new_entries[@]}" -gt 0 ]; then
+    if [ "$(echo "$new_entries" | jq length)" -gt 0 ]; then
         echo "Updating index.json..."
 
         # Merge new entries into the index
-        updated_index=$(jq ". += [${new_entries[*]}]" "$temp_index")
+        updated_index=$(jq ". += $new_entries" "$temp_index")
 
         # Save the updated index to the temp file
         echo "$updated_index" > "$temp_index"
@@ -101,6 +96,7 @@ upload() {
 
     echo "Done! Files uploaded and index.json updated."
 }
+
 
 # Clear subcommand: clear all files in the bucket without removing the bucket itself
 clear() {
