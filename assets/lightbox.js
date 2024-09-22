@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextBtn = document.querySelector('#next-btn');
 
   // Fetch image data from pics.json and generate the gallery
-  fetch('pics.json')
+  fetch('https://pics.sylvesterstapfer.com/index.json')
     .then(response => response.json())
     .then(data => {
       images = data; // Store the images for later use (e.g., navigation)
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Create an img element for the thumbnail
       const img = document.createElement('img');
-      img.dataset.src = image.src; // Use data-src for lazy loading
+      img.dataset.src = `https://pics.sylvesterstapfer.com/${image.filename}_thumbnail.jpg`; // Use data-src for lazy loading
       img.alt = image.title;
       img.classList.add('lazy-image');
       thumbnail.appendChild(img);
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number} index - The index of the image to display
    */
   function setLightboxImage(index) {
-    lightboxImage.src = images[index].src; // Update image source
+    lightboxImage.src = `https://pics.sylvesterstapfer.com/${images[index].filename}_large.jpg`; // Update image source
     lightboxTitle.innerText = images[index].title; // Update image title
   }
 
