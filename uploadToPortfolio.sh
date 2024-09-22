@@ -47,8 +47,6 @@ upload() {
         uuid=$(uuidgen)
         base_filename=$(basename "$file")
         title="${base_filename%.*}"
-
-        # Remove leading numbers from the filename to create the title
         title="${title##*[ 0-9]}"
 
         # Define file names for images

@@ -6,16 +6,18 @@ permalink: /about
 
 <div class="content">
     <div class="about-image">
-    <img src="https://pics.sylvesterstapfer.com/me.jpg" alt="About Image">
+    <img src="https://pics.sylvesterstapfer.com/me.jpg" alt="Sylvester Stapfer">
   </div>
   <div class="about-text">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id metus scelerisque, laoreet nisi et, consequat lectus. Duis vulputate justo at felis feugiat, sed laoreet ipsum pellentesque. Curabitur nec nunc id nisi gravida interdum non id velit.</p>
-    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer laoreet aliquam tellus sit amet feugiat. Nulla facilisi. Aliquam gravida dapibus fermentum. Suspendisse id nulla at lacus egestas luctus non vel tortor.</p>
-    <p>Aliquam eget arcu auctor, facilisis eros ut, vulputate metus. Fusce sit amet dictum nunc. Etiam malesuada justo id nibh malesuada, nec tempus magna tristique. Mauris dapibus nunc ut tellus congue, eget posuere lacus fringilla.</p>
-    <p>Aliquam eget arcu auctor, facilisis eros ut, vulputate metus. Fusce sit amet dictum nunc. Etiam malesuada justo id nibh malesuada, nec tempus magna tristique. Mauris dapibus nunc ut tellus congue, eget posuere lacus fringilla.</p>
-    <p>Aliquam eget arcu auctor, facilisis eros ut, vulputate metus. Fusce sit amet dictum nunc. Etiam malesuada justo id nibh malesuada, nec tempus magna tristique. Mauris dapibus nunc ut tellus congue, eget posuere lacus fringilla.</p>
-    <p>Aliquam eget arcu auctor, facilisis eros ut, vulputate metus. Fusce sit amet dictum nunc. Etiam malesuada justo id nibh malesuada, nec tempus magna tristique. Mauris dapibus nunc ut tellus congue, eget posuere lacus fringilla.</p>
-    <p>Aliquam eget arcu auctor, facilisis eros ut, vulputate metus. Fusce sit amet dictum nunc. Etiam malesuada justo id nibh malesuada, nec tempus magna tristique. Mauris dapibus nunc ut tellus congue, eget posuere lacus fringilla.</p>
+    <p>
+      Je suis un photographe qui se spécialise dans la photographie d'architecture dans le périgord noir.
+    </p>
+    <p>
+      Passionné d'une multitude de choses, il a été particulièrement difficile de choisir entre deux voies lors de mon orientation après mon bac : l'informatique et la photographie. Ayant choisi tout d'abord l'informatique, 10 ans après, je mets la photographie qui ne m'a jamais quitté sur le devant la scène.
+    </p>
+    <p>
+      Cette photographie m'intéresse par sa technique inhabituelle et son objectif paticulier : celui de marier la vision de l'architecte à la mienne.
+    </p>
   </div>
 
 </div>
