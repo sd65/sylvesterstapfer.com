@@ -6,7 +6,7 @@ permalink: /about
 
 <div class="content">
     <div class="about-image">
-    <img src="/assets/me.jpg" alt="About Image">
+    <img src="https://pics.sylvesterstapfer.com/me.jpg" alt="About Image">
   </div>
   <div class="about-text">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id metus scelerisque, laoreet nisi et, consequat lectus. Duis vulputate justo at felis feugiat, sed laoreet ipsum pellentesque. Curabitur nec nunc id nisi gravida interdum non id velit.</p>

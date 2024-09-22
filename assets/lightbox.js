@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Create an img element for the thumbnail
       const img = document.createElement('img');
-      img.dataset.src = `https://pics.sylvesterstapfer.com/${image.filename}_thumbnail.jpg`; // Use data-src for lazy loading
+      img.dataset.src = `https://pics.sylvesterstapfer.com/p/${image.filename}_thumbnail.jpg`; // Use data-src for lazy loading
       img.alt = image.title;
       img.classList.add('lazy-image');
       thumbnail.appendChild(img);
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number} index - The index of the image to display
    */
   function setLightboxImage(index) {
-    lightboxImage.src = `https://pics.sylvesterstapfer.com/${images[index].filename}_large.jpg`; // Update image source
+    lightboxImage.src = `https://pics.sylvesterstapfer.com/p/${images[index].filename}.jpg`; // Update image source
     lightboxTitle.innerText = images[index].title; // Update image title
   }
 

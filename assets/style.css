@@ -125,7 +125,7 @@ button:hover {
 /* Thumbnail styles */
 .thumbnail {
   overflow: hidden; /* Ensure images do not overflow their container */
-  aspect-ratio: 4 / 3; /* Maintain 4:3 aspect ratio */
+  aspect-ratio: 3 / 2; /* Maintain 4:3 aspect ratio */
   transition: opacity 0.2s ease; /* Smooth opacity transition on hover */
   background: #c4c4c4; /* Placeholder */
 }
