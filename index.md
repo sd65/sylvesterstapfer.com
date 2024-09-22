@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Portfolio"
+full-title: "Sylvester Stapfer | Photographe d'intérieur et d'architecture"
 lightbox: true
 ---
 
