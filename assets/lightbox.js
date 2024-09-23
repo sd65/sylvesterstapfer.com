@@ -131,6 +131,8 @@ document.addEventListener('DOMContentLoaded', function() {
         navigateLightbox(-1);
       } else if (event.key === 'ArrowRight') {
         navigateLightbox(1);
+      } else if (event.key === 'Escape') {
+        closeLightbox();
       }
     }
   });

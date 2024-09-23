@@ -59,7 +59,8 @@ upload() {
 
         # Resize the thumbnail image using sips
         echo "Resizing the thumbnail image..."
-        sips -Z 530 "$file" --out "$image_thumbnail"
+        sips -Z 1060 "$file" --out "$image_thumbnail" # For retina
+        # original LR is 2500px, 50%q, watermark
 
         # Upload images to R2 using wrangler
         echo "Uploading images to Cloudflare R2..."
