@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use strict mode: exit on error, undefined variable, and error in pipes
-set -xueo pipefail
+set -ueo pipefail
 
 # Check for required tools: sips, jq, wrangler
 for cmd in sips jq wrangler; do
