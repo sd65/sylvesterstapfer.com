@@ -223,16 +223,16 @@ a, a:visited {
   }
 
   .menu-icon {
-    font-size: 40px;
+    font-size: 50px;
     cursor: pointer;
   }
 
   .menu-icon.open::after {
-    content: '✖'; /* X for unfolded menu */
+    content: '×'; /* X for unfolded menu */
   }
 
   .menu-icon::after {
-    content: '☰'; /* Menu icon */
+    content: '+'; /* Menu icon */
   }
 
   .menu {
@@ -259,10 +259,21 @@ a, a:visited {
     flex-direction: column;
   }
 
-  .thumbnail {
-    margin: 10px 0; /* Equal margin between thumbnails */
-    max-width: 100%;
+  .thumbnails {
+    gap: 15px;
+    padding: 0px 15px;
   }
+
+  .thumbnail {
+    margin: 0;
+    max-width: 100%;
+    aspect-ratio: unset;
+  }
+
+  .thumbnail:hover {
+      opacity: 1;
+      cursor: unset;
+    }
 
    .header-row {
     display: flex;

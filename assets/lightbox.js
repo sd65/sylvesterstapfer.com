@@ -1,3 +1,5 @@
+const breakpoint = 950;
+
 document.addEventListener('DOMContentLoaded', function() {
 
   // Variables to hold the current image index and the image data
@@ -72,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number} index - The index of the image to display
    */
   function openLightbox(index) {
+    if (window.innerWidth < breakpoint) {
+        return;
+    }
     currentIndex = index; // Update current image index
     setLightboxImage(currentIndex); // Set the lightbox image
     lightbox.classList.remove('hidden'); // Show the lightbox
@@ -137,4 +142,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+
+  ///
+  window.addEventListener('resize', () => (window.innerWidth < breakpoint) ? closeLightbox() : null);
+
 });
+
+
+
