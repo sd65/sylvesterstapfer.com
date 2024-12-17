@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ '/assets/logo.svg' | relative_url }}">
   <title>{% if page.full-title %} {{ page.full-title }} {% else %} {{ page.title }} | {{ site.title }} {% endif %}</title>
+  <meta name="description" content="Photographe d'architecture basé à Sarlat. Je travaille dans le Périgord Noir et ses alentours." />
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <script src="{{ '/assets/script.js' | relative_url }}"></script>
   {% if page.lightbox %}
