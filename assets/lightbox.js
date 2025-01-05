@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Create an img element for the thumbnail
       const img = document.createElement('img');
       img.dataset.src = `https://pics.sylvesterstapfer.com/p/${image.filename}_thumbnail.jpg`; // Use data-src for lazy loading
+      img.dataset.srcFull = `https://pics.sylvesterstapfer.com/p/${image.filename}.jpg`;
       img.alt = image.title;
       img.classList.add('lazy-image');
       thumbnail.appendChild(img);
@@ -58,9 +59,15 @@ document.addEventListener('DOMContentLoaded', function() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          img.src = img.dataset.src; // Load the actual image
+          img.src = img.dataset.src;
           img.classList.remove('lazy-image');
-          observer.unobserve(img); // Stop observing once the image is loaded
+          observer.unobserve(img);
+          img.addEventListener('load', function onThumbnailLoad() {
+            img.removeEventListener('load', onThumbnailLoad);
+            if (window.innerWidth < breakpoint) {
+              img.src = img.dataset.srcFull;
+            }
+          });
         }
       });
     });

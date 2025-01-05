@@ -161,6 +161,7 @@ button:hover {
   max-width: calc(100vw - 400px); /* Ensure image fits with space for sidebar and margin */
   object-fit: contain; /* Ensure the image fits without distortion */
   cursor: default;
+  box-shadow: gray 0px 0px 5px;
 }
 
 /* Hidden class to hide elements */
