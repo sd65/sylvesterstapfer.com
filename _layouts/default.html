@@ -6,6 +6,12 @@
   <link rel="icon" href="{{ '/assets/logo.svg' | relative_url }}">
   <title>{% if page.full-title %} {{ page.full-title }} {% else %} {{ page.title }} | {{ site.title }} {% endif %}</title>
   <meta name="description" content="Photographe d'architecture basé à Sarlat. Je travaille dans le Périgord Noir et ses alentours." />
+
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:description" content="Photographe d'architecture basé à Sarlat." />
+  <meta property="og:image" content="{{ '/assets/logo.svg' | relative_url }}" />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <script src="{{ '/assets/script.js' | relative_url }}"></script>
   {% if page.lightbox %}
