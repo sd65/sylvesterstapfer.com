@@ -230,6 +230,10 @@ a, a:visited {
     flex-direction: column;
   }
 
+  .content {
+    padding-bottom: 4em;
+  }
+
   .sidebar {
     width: unset;
     min-width: unset;
