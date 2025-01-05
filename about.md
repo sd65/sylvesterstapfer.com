@@ -16,10 +16,10 @@ permalink: /about
       Ma passion pour la photographie a commencé avec un premier appareil photo, un cadeau, qui a éveillé mon intérêt pour la perspective et la composition. Ces notions, approfondies lors de cours de dessin, m'a permis de développer un regard plus aiguisé et structuré.
     </p>
     <p>
-      Peu de temps après, ne sortant jamais sans mon appareil, j'ai entamé une série photographique sur les textures. Cette phase d'expérimentation m'a conduit à me passionner pour la photographie de paysages, un terrain d'exploration où j'ai approfondi mes compétences en technique photo, notamment la composition, les  images composites et la retouche.
+      Peu de temps après, ne sortant jamais sans mon appareil, j'ai entamé une série photographique sur les textures. Ceci m'a conduit à me passionner pour la photographie de paysages grâce à laquelle j'ai approfondi mes compétences technique, la composition mais aussi les  images composites et la retouche.
     </p>
     <p>
-      Séjournant à Londres un moment, j'y découvre la richesse de l’architecture victorienne et l’attention portée aux détails, aussi bien à l’intérieur qu’à l’extérieur des bâtiments. De retour en France, j’ai choisi de m’installer à Sarlat, au cœur du Périgord Noir, où les paysages naturels et le patrimoine architectural m’offrent un cadre unique à mon travail.
+      Habitant à Londres un moment, j'y découvre l’architecture victorienne et l’attention portée aux détails, aussi bien à l’intérieur qu’à l’extérieur des bâtiments. De retour en France, j’ai choisi de m’installer à Sarlat, au cœur du Périgord Noir, où les paysages naturels et le patrimoine architectural m’offrent un cadre unique à mon travail.
     </p>
 
 
